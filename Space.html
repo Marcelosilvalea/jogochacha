@@ -171,7 +171,6 @@
         let gameRunning = false;
         let animationFrameId;
 
-        // --- JOGADOR ---
         const player = {
             x: canvas.width / 2 - 25,
             y: canvas.height - 60,
@@ -184,14 +183,14 @@
 
         function drawPlayer() {
             ctx.fillStyle = player.color;
-            // Corpo da nave
+        
             ctx.beginPath();
             ctx.moveTo(player.x + player.width / 2, player.y);
             ctx.lineTo(player.x, player.y + player.height);
             ctx.lineTo(player.x + player.width, player.y + player.height);
             ctx.closePath();
             ctx.fill();
-            // Cockpit
+        
             ctx.fillStyle = '#000';
             ctx.fillRect(player.x + player.width / 2 - 5, player.y + 10, 10, 10);
         }
@@ -199,7 +198,7 @@
         function movePlayer() {
             player.x += player.dx;
 
-            // Limites da tela
+            
             if (player.x < 0) {
                 player.x = 0;
             }
@@ -208,7 +207,7 @@
             }
         }
 
-        // --- PROJÉTEIS ---
+        
         const bullets = [];
         const bulletSpeed = 10;
         let canShoot = true;
@@ -307,7 +306,7 @@
         const enemyBulletSpeed = 5;
 
         function enemyShoot() {
-            if (invaders.length > 0 && Math.random() < 0.02) { // Chance de tiro
+            if (invaders.length > 0 && Math.random() < 0.02) {
                 const randomInvader = invaders[Math.floor(Math.random() * invaders.length)];
                 enemyBullets.push({
                     x: randomInvader.x + randomInvader.width / 2 - 2,
