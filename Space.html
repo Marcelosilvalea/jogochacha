@@ -306,7 +306,7 @@
         const enemyBulletSpeed = 5;
 
         function enemyShoot() {
-            if (invaders.length > 0 && Math.random() < 0.02) {
+            if (invaders.length > 0 && Math.random() < 0.01) {
                 const randomInvader = invaders[Math.floor(Math.random() * invaders.length)];
                 enemyBullets.push({
                     x: randomInvader.x + randomInvader.width / 2 - 2,
@@ -382,13 +382,18 @@
         }
 
         function nextLevel() {
-            level++;
-            invaderSpeed += 0.5;
+            if(level < 10){
+          level++;
+            invaderSpeed += 0.1;
             playerHealth = 100; 
             bullets.length = 0;
             enemyBullets.length = 0;
             updateUI();
             createInvaders();
+        }
+        else{
+          alert("Parabéns, você salvou a Terra!");
+        }
         }
 
         function gameOver() {
